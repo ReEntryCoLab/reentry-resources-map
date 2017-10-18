@@ -12,7 +12,7 @@ layout: default
             <a href="#">Learn more about who we are.</a>
         </p>
         <p>
-            Answer some questions to see a custom list of programs and resources. You can skip any question you want. 
+            Answer some questions to see a custom list of programs and resources. You can skip any question you want.
             Or, <a class="resources-link" href="/resources">skip all of these questions to see the entire list</a>.
         </p>
     </div>
@@ -66,7 +66,7 @@ layout: default
                     {{/each}}
                     {{#if @first}}{{else}}<button class="btn previous-btn" onclick="updateStep({{@index}} - 1)">Previous</button>{{/if}}
                     {{#if @last}}
-                    <button class="btn resources-btn"><a class="resources-link" href="/resources">See Resources</a></button>
+                    <a class="btn resources-btn" href="/resources">See Resources</a>
                     {{else}}
                     <button class="btn next-btn" onclick="updateStep({{@index}} + 1)">Next</button>
                     {{/if}}
