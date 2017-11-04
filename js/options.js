@@ -1,13 +1,19 @@
 var facilityTypeOptions = [
-    "reentry",
+    // "reentry",
     "housing",
     "food",
     "employment",
     "health",
-    "family_and_relationships",
-    "advocacy",
-    "legal",
-    "veterans"
+    // "family_and_relationships",
+    // "advocacy",
+    "legal_assistance",
+    // "immigrants",
+    // "veterans"
+];
+var whoOptions = [
+    "immigrants",
+    "veterans",
+    "currently_incarcerated"
 ];
 var flagOptions = [
     "men_only",
@@ -24,7 +30,7 @@ var iconMap = {
     "housing": "icon-home",
     "food": "icon-food",
     "health": "icon-heartbeat",
-    "legal": "icon-gavel",
+    "legal_assistance": "icon-gavel",
     "employment": "icon-work",
     "veterans": "icon-vets",
     "family_and_relationships": "icon-users",

@@ -16,8 +16,8 @@ var WIZARD_STEPS = [
                     { value: 'food', text: 'Help with meals or groceries' },
                     { value: 'employment', text: 'Job training or help finding a job' },
                     { value: 'health', text: 'Medical services, counseling, or wants help with addiction' },
-                    { value: 'advocacy', text: 'Groups that advocate for incarcerated people' },
-                    { value: 'legal', text: 'Legal assistance' }
+                    // { value: 'advocacy', text: 'Groups that advocate for incarcerated people' },
+                    { value: 'legal_assistance', text: 'Legal assistance' }
                 ]
             },
             {

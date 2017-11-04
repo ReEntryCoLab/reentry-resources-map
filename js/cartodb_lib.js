@@ -18,7 +18,7 @@ var CartoDbLib = {
   offset: 0,
   results: [],
   resultsCount: 0,
-  fields : "id, address, name, website, phone, hours, notes, restrictions, online_only, " + facilityTypeOptions.join(", ") + ", " + flagOptions.join(", "),
+  fields : "id, address, name, website, phone, hours, notes, restrictions, online_only, " + facilityTypeOptions.join(", ") + ", " + whoOptions.join(", ") + ", " + flagOptions.join(", "),
 
   initialize: function(){
     //reset filters
@@ -64,7 +64,7 @@ var CartoDbLib = {
 
         if (props) {
           $.each(props, function (prop, value) {
-            if ($.inArray(String(prop), facilityTypeOptions) > -1 && value == 'Yes') {
+            if ($.inArray(String(prop), facilityTypeOptions.concat(whoOptions)) > -1 && value == 'Yes') {
               facilityType += (CartoDbLib.formatText(prop) + ", ")
             }
           });
@@ -416,8 +416,8 @@ var CartoDbLib = {
         distance: radiusMap[CartoDbLib.radius]
       }
     }
-    var catSelections = $.map($('.filter-option.category:checked'), function(obj, i) {
-      return obj.value;
+    var catSelections = $.map($('.filter-option.category:checked, .filter-option.who:checked'), function(obj, i) {
+      return CartoDbLib.formatText(obj.value);
     });
     var resSelections = $.map($('.filter-option.restriction:checked').parent(), function(obj, i) {
       return $.trim(obj.textContent).toLowerCase() || $.trim(obj.innerText).toLowerCase();
@@ -504,7 +504,7 @@ var CartoDbLib = {
 
   getIcons: function(obj) {
     var iconArr = [];
-    $.each(facilityTypeOptions, function( index, cat ) {
+    $.each(facilityTypeOptions.concat(whoOptions), function( index, cat ) {
       if (obj[cat] == true) {
         if (iconMap.hasOwnProperty(cat)) {
           iconArr.push(iconMap[cat]);

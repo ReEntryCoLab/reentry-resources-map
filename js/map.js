@@ -1,7 +1,9 @@
-var restrictionOptions = [
-  {id: 0, text: "Women", value: "men_only"},
-  {id: 1, text: "Men", value: "women_only"},
-  {id: 2, text: "People on the sex offenders registry", value: "prohibits_sex_offenders"}
+var whoFilterOptions = [
+  { id: 0, text: "Veterans", value: "veterans", type: "who", icon: "icon-vets" },
+  { id: 1, text: "Immigrants", value: "immigrants", type: "who" },
+  { id: 2, text: "Currently incarcerated", value: "currently_incarcerated", type: "who" },
+  { id: 3, text: "Women", value: "men_only", type: "restriction", icon: "icon-female" },
+  { id: 4, text: "Men", value: "women_only", type: "restriction", icon: "icon-male" },
 ];
 
 $(window).resize(function () {
@@ -34,19 +36,21 @@ $(function() {
     }
   });
 
-  $('#btnViewMode').click(function(){
+  $('.btnViewMode').click(function(){
     if ($('#mapCanvas').is(":visible")){
-      $('#btnViewMode').html("<i class='icon-map-marker'></i> Map View");
+      // $('#btnViewMode').html("<i class='icon-map-marker'></i> Map View");
       $('#listCanvas').show();
       CartoDbLib.renderList();
       $('#mapCanvas').hide();
+      $("#seeListContainer").hide();
     }
     else {
-      $('#btnViewMode').html("<i class='icon-list'></i> List View");
+      // $('#btnViewMode').html("<i class='icon-list'></i> List View");
       $('#listCanvas').hide();
       $("#nextButton").hide();
       $("#prevButton").hide();
       $('#mapCanvas').show();
+      $("#seeListContainer").show();
       CartoDbLib.map.invalidateSize();
     }
   });
@@ -62,7 +66,7 @@ $(function() {
   // Render filters template
   var filterData = {
     categories: makeSelectData(facilityTypeOptions),
-    restrictions: restrictionOptions
+    who_options: whoFilterOptions
   };
   var source = $('#filter-option-template').html();
   var template = Handlebars.compile(source);
