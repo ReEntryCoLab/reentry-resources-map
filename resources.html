@@ -39,14 +39,14 @@ permalink: /resources/
             <div class="check"></div>
           </label>
           {{/each}}
-          <h4 class="restriction-filter">Who</h4>
-          {{#each restrictions}}
+          <h4 class="who-filter">Who</h4>
+          {{#each who_options}}
           <label class="control">
             {{text}}
             {{#if icon}}
             <i class="{{icon}}"></i>
             {{/if}}
-            <input class="filter-option restriction" type="checkbox" id="{{id}}" value="{{value}}">
+            <input class="filter-option {{type}}" type="checkbox" id="{{id}}" value="{{value}}">
             <div class="check"></div>
           </label>
           {{/each}}
@@ -87,12 +87,18 @@ permalink: /resources/
     <div>
       <button class='btn btn-search' id="btnSearch"><i class='icon-search'></i> Apply filters</button>
       <a href="{{site.baseurl}}/resources" class='btn btn-reset' id="btnReset" data-toggle="tooltip" data-placement="bottom" title="Clear filters"><i class="icon-repeat" aria-hidden="true"></i> Clear filters</a>
-      <button class='btn btn-change' id='btnViewMode' data-toggle='tooltip' data-placement="bottom" title='Change view'><i class='icon-map-marker'></i> See map</button>
-      <button class='btn btn-save' id="btnSave"><i class='icon-star-o'></i> Save resources</button>
+      <!-- <button class='btn btn-save' id="btnSave"><i class='icon-star-o'></i> Save resources</button> -->
     </div>
   </div>
 
   <div class='col-md-8'>
+    <div class="row" id="seeListContainer" style="display: none">
+      <div class="col-md-12">
+        <button class='btn btn-change seeList btnViewMode' data-toggle='tooltip' data-placement="bottom" title='Change view'>
+          <i class='icon-list'></i> See list
+        </button>
+      </div>
+    </div>
     <div id='mapCanvas' style="display: none"></div>
     <script id="results-list-template" type="text/x-handlebars-template">
       {% raw %}
@@ -170,6 +176,9 @@ permalink: /resources/
       {% endraw %}
     </script>
     <div id="listCanvas" style="display: block">
+      <button class='btn btn-change seeMap btnViewMode' data-toggle='tooltip' data-placement="bottom" title='Change view'>
+        <i class='icon-map-marker'></i> See map
+      </button>
       <div id="search-header" class="list-header">
         <h4>Search results</h4>
       </div>

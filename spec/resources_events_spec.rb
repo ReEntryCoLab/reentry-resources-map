@@ -7,13 +7,13 @@ describe "events", type: :feature, js: true do
   describe "click search button" do
     it 'shows a map' do
       do_search(address)
-      find('#btnViewMode', match: :first).click
+      find('.seeMap', match: :first).click
       expect(page).to have_selector('#mapCanvas', visible: true)
     end
 
     it 'adds a pushpin' do
       do_search(address)
-      find('#btnViewMode', match: :first).click
+      find('.seeMap', match: :first).click
       sleep(1)
       expect(page).to have_xpath('//img[@src="/img/blue-pushpin.png"]')
     end
@@ -21,14 +21,14 @@ describe "events", type: :feature, js: true do
     it 'updates the resources' do
       do_search(address)
       sleep(1)
-      find('#btnViewMode', match: :first).click
+      find('.seeMap', match: :first).click
       expect(find('.resources-count').text).to end_with 'locations found'
     end
 
     it 'updates the info div' do
       do_search(address)
       sleep(1)
-      find('#btnViewMode', match: :first).click
+      find('.seeMap', match: :first).click
       expect(find('.info').text).to eq('Hover over a location')
     end
   end
@@ -57,11 +57,11 @@ describe "events", type: :feature, js: true do
 
     it 'shows filter description' do
       visit '/resources'
-      expect(page).to have_selector('#btnViewMode')
+      expect(page).to have_selector('.btnViewMode')
       find('#filters label.control', match: :first).click
       find("#btnSearch", match: :first).click
       sleep(1)
-      expect(find('#search-header h4').text).to end_with 'resources in Illinois for Re-entry'
+      expect(find('#search-header h4').text).to end_with 'resources in Illinois for Housing'
     end
     
     it 'shows page counts' do
@@ -72,7 +72,7 @@ describe "events", type: :feature, js: true do
     it 'updates page counts on filter' do
       visit '/resources'
       total_page_count = find('#search-header h4').text.split(" ")[0].to_i
-      expect(page).to have_selector('#btnViewMode')
+      expect(page).to have_selector('.btnViewMode')
       find('#filters label.control', match: :first).click
       find("#btnSearch", match: :first).click
       sleep(1)
@@ -106,50 +106,50 @@ describe "events", type: :feature, js: true do
 
     it 'filters with multiple categories' do
       visit '/resources'
-      expect(page).to have_selector('#btnViewMode')
+      expect(page).to have_selector('.btnViewMode')
       find('#filters .control', match: :first).click
       find('#filters .control:nth-child(2)', match: :first).click
       find("#btnSearch", match: :first).click
       sleep(1)
-      expect(find('#search-header h4').text).to end_with 'resources in Illinois for Re-entry, Housing'
+      expect(find('#search-header h4').text).to end_with 'resources in Illinois for Housing, Food'
     end
 
     it 'show restrictions in description' do
       visit '/resources'
-      expect(page).to have_selector('#btnViewMode')
+      expect(page).to have_selector('.btnViewMode')
       find('#filters .control:first-child', match: :first).click
       find('#filters .control:last-child', match: :first).click
       find("#btnSearch", match: :first).click
       sleep(1)
-      expect(find('#search-header h4').text).to end_with 'resources in Illinois for Re-entry that serve people on the sex offenders registry'
+      expect(find('#search-header h4').text).to end_with 'resources in Illinois for Housing that serve men'
     end
   end
 
-  describe "click save search button" do
-    it "adds an item to nav bar" do
-      do_search(address)
-      find("#btnSave", match: :first).click
-      expect(page).to have_selector('#dropdown-results', visible: true)
-    end
+  # describe "click save search button" do
+  #   it "adds an item to nav bar" do
+  #     do_search(address)
+  #     find("#btnSave", match: :first).click
+  #     expect(page).to have_selector('#dropdown-results', visible: true)
+  #   end
 
-    it "adds a list item to dropdown menu" do
-      visit '/resources'
-      sleep(1)
-      find("#btnSave", match: :first).click
-      sleep(1)
-      find(".dropdown-toggle", match: :first).click
-      searches = Array.new
-      searches = find('.saved-searches').all('li')
-      original_list = searches.length
-      # Do another search with new address.
-      do_search('432 North Clark Street, Chicago, IL, United States')
-      find("#btnSave", match: :first).click
-      find(".dropdown-toggle", match: :first).click
-      searches_redux = Array.new
-      searches_redux = find('.saved-searches').all('li')
-      expect(searches_redux.length - original_list).to eq(1)
-    end
-  end
+  #   it "adds a list item to dropdown menu" do
+  #     visit '/resources'
+  #     sleep(1)
+  #     find("#btnSave", match: :first).click
+  #     sleep(1)
+  #     find(".dropdown-toggle", match: :first).click
+  #     searches = Array.new
+  #     searches = find('.saved-searches').all('li')
+  #     original_list = searches.length
+  #     # Do another search with new address.
+  #     do_search('432 North Clark Street, Chicago, IL, United States')
+  #     find("#btnSave", match: :first).click
+  #     find(".dropdown-toggle", match: :first).click
+  #     searches_redux = Array.new
+  #     searches_redux = find('.saved-searches').all('li')
+  #     expect(searches_redux.length - original_list).to eq(1)
+  #   end
+  # end
 
   describe "click reset" do
     it "resets the page" do

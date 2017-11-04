@@ -228,6 +228,10 @@ https://kyusuf.com/post/completely-css-custom-checkbox-radio-buttons-and-select-
   display: inline-block;
 }
 
+button.btn.btnViewMode {
+  float: right;
+}
+
 .m-top-sm { margin-top: 10px; }
 
 .m-bottom-sm { margin-bottom: 10px; }
