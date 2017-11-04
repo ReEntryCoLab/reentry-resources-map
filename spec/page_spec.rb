@@ -32,7 +32,7 @@ describe "page", type: :feature, js: true do
   describe "map canvas" do
     before(:each) {
       visit '/resources'
-      find('#btnViewMode', match: :first).click
+      find('.btnViewMode', match: :first).click
     }
 
     it "has a resources div" do
