@@ -502,6 +502,9 @@ div#modal-image { padding: 0; }
   .header-bg {
     background-attachment: inherit;
   }
+  #filter-heading span {
+    font-size: 19px;
+  }
 }
 
 .title-content {
