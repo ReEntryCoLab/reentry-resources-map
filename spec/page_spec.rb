@@ -17,15 +17,15 @@ describe "page", type: :feature, js: true do
     end
 
     it "has a Download Guide" do
-      expect(find('#navbar ul li:nth-child(4)').text).to eq('Download Guide')
+      expect(find('#navbar ul li:nth-child(2)').text).to eq('Download Guide')
     end
 
     it "has an About" do
-      expect(find('#navbar ul li:nth-child(5)').text).to eq('About')
+      expect(find('#navbar ul li:nth-child(3)').text).to eq('About')
     end
 
     it "has an Add resource" do
-      expect(find('#navbar ul li:nth-child(6)').text).to eq('Add resource')
+      expect(find('#navbar ul li:nth-child(4)').text).to eq('Add resource')
     end
   end
 
@@ -36,10 +36,6 @@ describe "page", type: :feature, js: true do
     }
 
     it "has a resources div" do
-      expect(page).to have_selector('.resources-count', visible: true)
-    end
-
-    it "has an info div" do
       expect(page).to have_selector('.resources-count', visible: true)
     end
   end

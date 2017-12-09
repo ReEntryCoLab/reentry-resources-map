@@ -24,13 +24,6 @@ describe "events", type: :feature, js: true do
       find('.seeMap', match: :first).click
       expect(find('.resources-count').text).to end_with 'locations found'
     end
-
-    it 'updates the info div' do
-      do_search(address)
-      sleep(1)
-      find('.seeMap', match: :first).click
-      expect(find('.info').text).to eq('Hover over a location')
-    end
   end
 
   describe "click mode view button" do
@@ -41,6 +34,7 @@ describe "events", type: :feature, js: true do
 
     it 'shows result count' do
       visit '/resources'
+      sleep(1)
       expect(find('#search-header h4').text).to end_with 'resources in Illinois for all categories'
     end
     
@@ -71,6 +65,7 @@ describe "events", type: :feature, js: true do
     
     it 'updates page counts on filter' do
       visit '/resources'
+      sleep(1)
       total_page_count = find('#search-header h4').text.split(" ")[0].to_i
       expect(page).to have_selector('.btnViewMode')
       find('#filters label.control', match: :first).click
@@ -125,54 +120,12 @@ describe "events", type: :feature, js: true do
     end
   end
 
-  # describe "click save search button" do
-  #   it "adds an item to nav bar" do
-  #     do_search(address)
-  #     find("#btnSave", match: :first).click
-  #     expect(page).to have_selector('#dropdown-results', visible: true)
-  #   end
-
-  #   it "adds a list item to dropdown menu" do
-  #     visit '/resources'
-  #     sleep(1)
-  #     find("#btnSave", match: :first).click
-  #     sleep(1)
-  #     find(".dropdown-toggle", match: :first).click
-  #     searches = Array.new
-  #     searches = find('.saved-searches').all('li')
-  #     original_list = searches.length
-  #     # Do another search with new address.
-  #     do_search('432 North Clark Street, Chicago, IL, United States')
-  #     find("#btnSave", match: :first).click
-  #     find(".dropdown-toggle", match: :first).click
-  #     searches_redux = Array.new
-  #     searches_redux = find('.saved-searches').all('li')
-  #     expect(searches_redux.length - original_list).to eq(1)
-  #   end
-  # end
-
   describe "click reset" do
     it "resets the page" do
       do_search(address)
       find("#btnReset", match: :first).click
       uri = URI.parse(current_url)
       expect("#{uri.path}?#{uri.query}").to eq("/resources?")
-    end
-  end
-
-  describe "save facility" do
-    it "adds an element to nav bar" do
-      visit '/resources'
-      sleep(1)
-      find("td.hidden-xs .icon-star-o", match: :first).click
-      sleep(1)
-      expect(page).to have_selector("#saved-locations", visible: true)
-    end
-
-    it "changes the icon to a circle" do
-      do_search(address)
-      find(".icon-star-o", match: :first).click
-      expect(page).to have_selector(".icon-star", visible: true)
     end
   end
 
