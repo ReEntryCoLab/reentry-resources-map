@@ -9,7 +9,6 @@ var WIZARD_STEPS = [
                     'for. We will filter the list to show you only programs related to what ' +
                     'you select.',
                 help_text: 'The person is looking for',
-                checked_val: 'true',
                 param: 'type',
                 checkbox: [
                     { value: 'housing', text: 'A place to live or immediate shelter' },
@@ -17,13 +16,13 @@ var WIZARD_STEPS = [
                     { value: 'employment', text: 'Job training or help finding a job' },
                     { value: 'health', text: 'Medical services, counseling, or wants help with addiction' },
                     // { value: 'advocacy', text: 'Groups that advocate for incarcerated people' },
-                    { value: 'legal_assistance', text: 'Legal assistance' }
+                    { value: 'legalassistance', text: 'Legal assistance' }
                 ]
             },
             {
                 text: 'Is this person currently incarcerated?',
                 help_text: 'We can show you programs that serve incarcerated people and their families.',
-                param: 'currently_incarcerated',
+                param: 'currentlyincarcerated',
                 radio: [
                     { value: 'true', text: 'Yes' },
                     { value: 'false', text: 'No' }
@@ -52,14 +51,13 @@ var WIZARD_STEPS = [
                     'select all of the options below that accurately describe that person. ' +
                     'We can filter the list to show programs and resources that will apply.',
                 help_text: 'This person',
-                checked_val: 'null',
                 param: 'type',
                 checkbox: [
-                    { value: 'is_parent', text: 'Is a parent' },
+                    { value: 'isparent', text: 'Is a parent' },
                     { value: 'veterans', text: 'Is a veteran' },
                     { value: 'immigrant', text: 'Is an immigrant' },
-                    { value: 'women_only', text: 'Is a man' },
-                    { value: 'men_only', text: 'Is a woman' }
+                    { value: 'womenonly', text: 'Is a man' },
+                    { value: 'menonly', text: 'Is a woman' }
                 ]
             }
         ]
@@ -69,11 +67,10 @@ var WIZARD_STEPS = [
 function updateQueryParams() {
     var urlBase = "/resources/#/?";
     var typeOptions = $.map($(".filter-option:checked"), function(obj, idx) { return obj.value; });
-    if (typeOptions.length) urlBase += "type=" + encodeURIComponent(typeOptions.join(" AND ")) + "&";
+    if (typeOptions.length) urlBase += "type=" + encodeURIComponent(typeOptions.join(",")) + "&";
 
     var address = $("#search-address").val();
     if (address.length) urlBase += "address=" + encodeURIComponent(address);
-
     $(".resources-link").attr("href", urlBase);
 }
 
@@ -107,5 +104,6 @@ function stepLabels(steps) {
     var currentPageIdx = addrStep ? +addrStep - 1 : 0;
     updateStep(currentPageIdx);
     var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search-address'));
-    $("#wizard input").on("change", updateQueryParams);
+    // Add slight delay for autocomplete values
+    $("#wizard input").on("change", function() { setTimeout(updateQueryParams, 250); });
 })()

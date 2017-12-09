@@ -35,7 +35,7 @@ permalink: /resources/
             {{#if icon}}
             <i class="{{icon}}"></i>
             {{/if}}
-            <input class="filter-option category" type="checkbox" id="{{id}}" value="{{text}}">
+            <input class="filter-option category" type="checkbox" id="{{id}}" value="{{value}}">
             <div class="check"></div>
           </label>
           {{/each}}
@@ -65,14 +65,14 @@ permalink: /resources/
                 <div class='form-group search-radius-group'>
                   <label for="search-radius">Within</label>
                   <select id='search-radius' class='form-control'>
-                    <option value='400'>2 blocks</option>
-                    <option value='805'>1/2 mile</option>
-                    <option value='1610'>1 mile</option>
-                    <option value='3220'>2 miles</option>
-                    <option value='8050' selected>5 miles</option>
-                    <option value='16095'>10 miles</option>
-                    <option value='40253'>25 miles</option>
-                    <option value='80506'>50 miles</option>
+                    <option value='0.25'>2 blocks</option>
+                    <option value='0.5'>1/2 mile</option>
+                    <option value='1'>1 mile</option>
+                    <option value='2'>2 miles</option>
+                    <option value='5' selected>5 miles</option>
+                    <option value='10'>10 miles</option>
+                    <option value='25'>25 miles</option>
+                    <option value='50'>50 miles</option>
                   </select>
                 </div>
               </div>
@@ -86,8 +86,7 @@ permalink: /resources/
 
     <div>
       <button class='btn btn-search' id="btnSearch"><i class='icon-search'></i> Apply filters</button>
-      <a href="{{site.baseurl}}/resources" class='btn btn-reset' id="btnReset" data-toggle="tooltip" data-placement="bottom" title="Clear filters"><i class="icon-repeat" aria-hidden="true"></i> Clear filters</a>
-      <!-- <button class='btn btn-save' id="btnSave"><i class='icon-star-o'></i> Save resources</button> -->
+      <button class='btn btn-reset' id="btnReset"><i class="icon-repeat" aria-hidden="true"></i> Clear filters</button>
     </div>
   </div>
 
@@ -106,11 +105,6 @@ permalink: /resources/
       <tr>
         <td class="hidden-xs">
           <span class="hidden given-id">{{id}}</span>
-          {{#if cookie}}
-          <i class='icon-star' aria-hidden='true' data-toggle='tooltip' title='Location saved'></i>
-          {{else}}
-          <i class="icon-star-o" aria-hidden="true" data-toggle="tooltip" title="Save location"></i>
-          {{/if}}
         </td>
         <td>
           <span class="facility-name">{{name}}</span>
