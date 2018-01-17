@@ -41,11 +41,11 @@ $(function() {
       ResourceLib.renderList();
       $('#mapCanvas').hide();
       $("#seeListContainer").hide();
+      $('#listControls').show();
     }
     else {
       $('#listCanvas').hide();
-      $("#nextButton").hide();
-      $("#prevButton").hide();
+      $('#listControls').hide();
       $('#mapCanvas').show();
       $("#seeListContainer").show();
       ResourceLib.map.invalidateSize();
