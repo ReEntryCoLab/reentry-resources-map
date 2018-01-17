@@ -14,6 +14,7 @@ var ResourceLib = {
   results: [],
   resultsCount: 0,
   pageSize: 20,
+  infoBox: L.control({position: 'bottomleft'}),
 
   // MAIN FILTER FUNCTIONS
 
@@ -45,12 +46,59 @@ var ResourceLib = {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution"> CARTO</a>'
       }).addTo(that.map);
 
+      that.infoBox.onAdd = function(map){
+        this._div = L.DomUtil.create('div', 'info');
+        this.update();
+        return this._div;
+      };
+
+      that.infoBox.update = function(properties){
+        var facilityType = ""
+
+        if (properties) {
+          $.each(properties, function (prop, value) {
+            if ($.inArray(String(prop), FACILITY_TYPE_OPTIONS.concat(WHO_OPTIONS)) > -1 && value == 'Yes') {
+              facilityType += (that.formatText(prop) + ", ")
+            }
+          });
+          facilityType = facilityType.slice(0, -2);
+
+          this._div.innerHTML = "<strong>" + properties.name + "</strong><br />" + facilityType + "<br />" + properties.address;
+        }
+        else {
+          this._div.innerHTML = 'Hover over a location';
+        }
+      }
+
+      that.infoBox.clear = function(){
+          this._div.innerHTML = 'Hover over a location';
+      }
+
+      that.infoBox.addTo(that.map);
+
       // Add GeoJSON layer for displaying results
       that.geojsonLayer = L.geoJSON([], {
         onEachFeature: function(feature, layer) {
           layer.on('click', function() {
             that.modalPop(feature.properties);
           });
+          layer.on('mouseover', function(){
+            that.infoBox.update(feature.properties);
+          });
+          layer.on('mouseout', function(){
+            that.infoBox.clear();
+          })
+        },
+        pointToLayer: function(feature, latlng){
+          var marker_opts = {
+              color: '#fff',
+              opacity: 0.8,
+              fillColor: '#71b1d7',
+              fillOpacity: 0.8,
+              weight: 1,
+              radius: 7
+          }
+          return L.circleMarker(latlng, marker_opts);
         }
       }).addTo(that.map);
 
@@ -73,7 +121,7 @@ var ResourceLib = {
       that.typeSelections = that.convertToPlainString($.address.parameter('type')).split(',')
         .map(function(v) { return v.replace(/ /g, ''); })
         .filter(function (v) { return v.length > 0; });
-      that.typeSelections.forEach(function(t) { 
+      that.typeSelections.forEach(function(t) {
         $("input.filter-option[value='" + t + "']").prop("checked", true);
       });
     }
@@ -91,7 +139,7 @@ var ResourceLib = {
       var properties = Object.keys(rows[0])
         .filter(function(p) { return p.startsWith("gsx$"); })
         .map(function(p) { return p.substr(4); });
-      
+
       that.allResults = rows.map(function(r) {
         var row = {};
         properties.forEach(function (p) {
