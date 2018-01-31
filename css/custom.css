@@ -273,10 +273,6 @@ button.btn.btnViewMode {
   color: #333;
 }
 
-.leaflet-google-layer{
-    z-index: 0 !important;
-}
-
 .leaflet-map-pane{
     z-index: 100;
 }

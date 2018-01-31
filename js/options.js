@@ -1,41 +1,92 @@
-var facilityTypeOptions = [
-    // "reentry",
+var CATEGORIES = [
+    "reentry",
+    "legalassistance",
+    "housing",
+    "health",
+    "food",
+    "advocacy",
+    "veterans",
+    "employment",
+    "immigrants",
+    "currentlyincarcerated",
+    "familyandrelationships",
+    "onlineonly",
+    "menonly",
+    "womenonly",
+    "womenchildrenonly",
+    "prohibitssexoffenders",
+    "hivaids",
+    "substancefree",
+    "parolees",
+    "lgbtqonly",
+    "seniors"
+];
+
+var FACILITY_TYPE_OPTIONS = [
     "housing",
     "food",
     "employment",
     "health",
-    // "family_and_relationships",
-    // "advocacy",
-    "legal_assistance",
-    // "immigrants",
-    // "veterans"
+    "legalassistance"
 ];
-var whoOptions = [
+
+var WHO_OPTIONS = [
     "immigrants",
     "veterans",
-    "currently_incarcerated"
+    "currentlyincarcerated"
 ];
-var flagOptions = [
-    "men_only",
-    "women_only",
-    "women_children_only",
-    "prohibits_sex_offenders",
-    "hiv_aids",
-    "substance_free",
+
+var FLAG_OPTIONS = [
+    "menonly",
+    "womenonly",
+    "womenchildrenonly",
+    "prohibitssexoffenders",
+    "hivaids",
+    "substancefree",
     "parolees",
-    "lgbtq_only"
+    "lgbtqonly"
 ];
-var iconMap = {
+
+var RESTRICTION_OPTIONS = [
+    "menonly",
+    "womenonly"
+];
+
+var ICON_MAP = {
     "reentry": "icon-reentry",
     "housing": "icon-home",
     "food": "icon-food",
     "health": "icon-heartbeat",
-    "legal_assistance": "icon-gavel",
+    "legalassistance": "icon-gavel",
     "employment": "icon-work",
     "veterans": "icon-vets",
-    "family_and_relationships": "icon-users",
+    "familyandrelationships": "icon-users",
     "advocacy": "icon-advocacy",
-    "women_only": "icon-female",
-    "men_only": "icon-male",
-    "women_children_only": "icon-child"
+    "womenonly": "icon-female",
+    "menonly": "icon-male",
+    "womenchildrenonly": "icon-child"
+};
+
+var LABEL_MAP = {
+    "reentry": "Re-Entry",
+    "legalassistance": "Legal Assistance",
+    "housing": "Housing",
+    "health": "Health",
+    "food": "Food",
+    "advocacy": "Advocacy",
+    "veterans": "Veterans",
+    "employment": "Employment",
+    "immigrants": "Immigrants",
+    "currentlyincarcerated": "Currently Incarcerated",
+    "familyandrelationships": "Family and Relationships",
+    "onlineonly": "Online Only",
+    "menonly": "Men Only",
+    "womenonly": "Women Only",
+    "womenchildrenonly": "Women and Children Only",
+    "prohibitssexoffenders": "Prohibits Sex Offenders",
+    "hivaids": "HIV/AIDS",
+    "substancefree": "Substance-Free",
+    "parolees": "Parolees",
+    "lgbtqonly": "LGBTQ Only",
+    "seniors": "Seniors"
 };

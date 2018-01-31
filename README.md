@@ -20,7 +20,6 @@ Re-Entry Guide.
 ## Dependencies
 
 * [Jekyll](http://jekyllrb.com)
-* [CartoDB](http://docs.cartodb.com/cartodb-platform/cartodb-js.html)
 * [Leaflet](http://leafletjs.com)
 * [jQuery](http://jquery.org)
 * [jQuery Address](http://www.asual.com/jquery/address)

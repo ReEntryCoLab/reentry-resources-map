@@ -5,11 +5,6 @@
       <div class="modal-header">
         <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon-times-circle" aria-hidden="true"></i></span></button>
         <h4 class="modal-title" id="modal-title">
-          {{#if cookie}}
-          <i class='icon-star' aria-hidden='true' data-toggle='tooltip' title='Location saved'></i>
-          {{else}}
-          <i class='icon-star-o' aria-hidden='true' data-toggle='tooltip' title='Save location'></i>
-          {{/if}}
           {{name}}
           {{#if icons}}
             {{#each icons}}
@@ -25,7 +20,7 @@
               <div id="modal-main">
                 {{#if address}}
                 <p id='modal-address'><i class='icon-map-marker' aria-hidden='true'></i>&nbsp; {{address}}</p>
-                <p class="modal-directions"><a href="http://maps.google.com/?q=' + data.address + '" target="_blank">GET DIRECTIONS</a></p>
+                <p class="modal-directions"><a href="http://maps.google.com/?q={{address}}" target="_blank">GET DIRECTIONS</a></p>
                 {{/if}}
                 {{#if phone}}
                 <p id='modal-phone'><i class='icon-phone' aria-hidden='true'></i>&nbsp; {{phone}}</p>
