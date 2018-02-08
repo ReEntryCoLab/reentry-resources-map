@@ -210,11 +210,27 @@ var ResourceLib = {
     }
     // Apply category filters to already filtered results if filters selected
     if (that.typeSelections.length > 0) {
+      var restrictions = [];
+      var filters = [];
+      that.typeSelections.forEach(function (t) {
+        if (RESTRICTION_OPTIONS.indexOf(t) > -1) {
+          restrictions.push(t);
+        } else {
+          filters.push(t);
+        }
+      });
       that.results = that.results.filter(function (r) {
-        return that.typeSelections.map(function (t) {
-          // Reverse boolean if a restriction (so NOT men only/women only)
-          return RESTRICTION_OPTIONS.indexOf(t) === -1 ? r[t] : !r[t];
-        }).some(function (v) { return v; });
+        var passesRestrictions = true;
+        var passesFilters = true;
+        if (restrictions.length > 0) {
+          passesRestrictions = restrictions.map(function (res) { return r[res]; })
+            .some(function (v) { return !v; });
+        }
+        if (filters.length > 0) {
+          passesFilters = filters.map(function (f) { return r[f]; })
+            .some(function (v) { return v; });
+        }
+        return passesRestrictions && passesFilters;
       });
     }
     that.resultsCount = that.results.length;
