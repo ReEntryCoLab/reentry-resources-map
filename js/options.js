@@ -19,21 +19,25 @@ var CATEGORIES = [
     "substancefree",
     "parolees",
     "lgbtqonly",
-    "seniors"
+    "seniors",
+    "parents"
 ];
 
 var FACILITY_TYPE_OPTIONS = [
+    "reentry",
     "housing",
     "food",
     "employment",
     "health",
-    "legalassistance"
+    "legalassistance",
+    "advocacy"
 ];
 
 var WHO_OPTIONS = [
     "immigrants",
     "veterans",
-    "currentlyincarcerated"
+    "currentlyincarcerated",
+    "parents"
 ];
 
 var FLAG_OPTIONS = [
@@ -68,14 +72,14 @@ var ICON_MAP = {
 };
 
 var LABEL_MAP = {
-    "reentry": "Re-Entry",
+    "reentry": "Re-Entry Programs",
     "legalassistance": "Legal Assistance",
     "housing": "Housing",
     "health": "Health",
     "food": "Food",
-    "advocacy": "Advocacy",
+    "advocacy": "Get Involved in Advocacy",
     "veterans": "Veterans",
-    "employment": "Employment",
+    "employment": "Employment Support",
     "immigrants": "Immigrants",
     "currentlyincarcerated": "Currently Incarcerated",
     "familyandrelationships": "Family and Relationships",
@@ -88,5 +92,6 @@ var LABEL_MAP = {
     "substancefree": "Substance-Free",
     "parolees": "Parolees",
     "lgbtqonly": "LGBTQ Only",
-    "seniors": "Seniors"
+    "seniors": "Seniors",
+    "parents": "Parents"
 };
