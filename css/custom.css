@@ -561,6 +561,11 @@ div#modal-image { padding: 0; }
   font-size: 18px;
 }
 
+#wizard-container span.sub-text {
+  font-size: 16px;
+  font-style: italic;
+}
+
 #wizard-container p.sub-text {
   font-size: 16px;
 }

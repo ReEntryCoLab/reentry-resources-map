@@ -13,18 +13,9 @@ var WIZARD_STEPS = [
                     { value: 'housing', text: 'A place to live or immediate shelter' },
                     { value: 'food', text: 'Help with meals or groceries' },
                     { value: 'employment', text: 'Job training or help finding a job' },
-                    { value: 'health', text: 'Medical services, counseling, or wants help with addiction' },
+                    { value: 'health', text: 'Health services, counseling, or wants help with addiction' },
                     // { value: 'advocacy', text: 'Groups that advocate for incarcerated people' },
                     { value: 'legalassistance', text: 'Legal assistance' }
-                ]
-            },
-            {
-                text: 'Is this person currently incarcerated?',
-                help_text: 'We can show you programs that serve incarcerated people and their families.',
-                param: 'currentlyincarcerated',
-                radio: [
-                    { value: 'true', text: 'Yes' },
-                    { value: 'false', text: 'No' }
                 ]
             }
         ]
@@ -34,7 +25,7 @@ var WIZARD_STEPS = [
         step_label: 'Where',
         questions: [
             {
-                text: 'Do you want to see resources that are close to a certain address? If so, enter it below.',
+                text: 'Do you want to see resources that are close to a certain address? If so, enter the address below.',
                 help_text: 'For example, we can show you resources that are close to your home.',
                 param: 'address',
                 address: 'search-address'
@@ -57,6 +48,15 @@ var WIZARD_STEPS = [
                     { value: 'immigrant', text: 'Is an immigrant' },
                     { value: 'womenonly', text: 'Is a man' },
                     { value: 'menonly', text: 'Is a woman' }
+                ]
+            },
+            {
+                text: 'Is this person currently incarcerated?',
+                help_text: 'We can show you programs that serve incarcerated people and their families.',
+                param: 'currentlyincarcerated',
+                radio: [
+                    { value: 'true', text: 'Yes' },
+                    { value: 'false', text: 'No' }
                 ]
             }
         ]

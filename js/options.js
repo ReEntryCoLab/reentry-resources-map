@@ -80,7 +80,7 @@ var LABEL_MAP = {
     "reentry": "Re-Entry Programs",
     "legalassistance": "Legal Assistance",
     "housing": "Housing",
-    "health": "Health",
+    "health": "Health Resources",
     "food": "Food",
     "advocacy": "Get Involved in Advocacy",
     "veterans": "Veterans",

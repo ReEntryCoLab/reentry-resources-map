@@ -33,8 +33,7 @@ layout: default
                 <div>
                     {{#each questions}}
                     <div class="question">
-                        <p class="question-text">{{text}}</p>
-                        {{#if sub_text}}<p class="sub-text">{{sub_text}}</p>{{/if}}
+                        <p class="question-text">{{text}} {{#if sub_text}}<span class="sub-text">{{sub_text}}</span>{{/if}}</p>
                         {{#if checkbox}}
                             <div class="checkbox">
                             <p class="help-text">{{help_text}}</p>
