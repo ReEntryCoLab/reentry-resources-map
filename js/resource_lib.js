@@ -162,10 +162,7 @@ var ResourceLib = {
         row.icons = that.getIcons(row);
         row.flags = that.getFlags(row);
         return row;
-      }).sort(function(a, b) {
-        // Sort by address
-        return (a.address === null) - (b.address === null) || -(a.address > b.address) || +(a.address < b.address);
-      });
+      }).sort(that.sortByName);
       // Separate clerk results from the rest
       that.clerkResults = that.allResults.filter(function(r) { return r.clerks; });
       that.allResults = that.allResults.filter(function(r) { return !r.clerks; });
@@ -198,15 +195,20 @@ var ResourceLib = {
     // Filter first based on location, then on categories
     if (that.currentLocation.length > 0) {
       var loc = {lat: that.currentLocation[0], lon: that.currentLocation[1]};
-      that.results = that.allResults.filter(function(r) {
+      that.results = that.allResults.map(function(r) { 
+        if (r.lat !== 0 && r.lon !== 0) { r.distance = haversine(loc, r); }
+        return r;
+      }).filter(function(r) {
         // Include results with null geography in location searches
-        if (r.lat === 0 || r.lon === 0) {
-          return true;
-        }
-        return haversine(loc, r) <= that.radius;
+        if (!r.distance) { return true; }
+        return r.distance <= that.radius;
+      }).sort(function (a, b) {
+        if (a.distance < b.distance || !b.distance) return -1;
+        if (a.distance > b.distance || !a.distance) return 1;
+        return 0;
       });
     } else {
-      that.results = that.allResults;
+      that.results = that.allResults.sort(that.sortByName);
     }
     // Apply category filters to already filtered results if filters selected
     if (that.typeSelections.length > 0) {
@@ -235,6 +237,14 @@ var ResourceLib = {
     }
     that.resultsCount = that.results.length;
     $.address.parameter('type', encodeURIComponent(that.typeSelections.join(",")));
+  },
+
+  sortByName: function(a, b) {
+    var nameA = a.name.trim().toUpperCase();
+    var nameB = b.name.trim().toUpperCase();
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0;
   },
 
   // Searches for address, then executes callback
