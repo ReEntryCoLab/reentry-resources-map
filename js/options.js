@@ -24,12 +24,12 @@ var CATEGORIES = [
 ];
 
 var FACILITY_TYPE_OPTIONS = [
-    "reentry",
     "housing",
     "food",
     "employment",
     "health",
     "legalassistance",
+    "reentry",
     "advocacy"
 ];
 
@@ -54,6 +54,11 @@ var FLAG_OPTIONS = [
 var RESTRICTION_OPTIONS = [
     "menonly",
     "womenonly"
+];
+
+var RESTRICTION_FILTERS = [
+    { text: "Women", value: "menonly", icon: "icon-female" },
+    { text: "Men", value: "womenonly", icon: "icon-male" }
 ];
 
 var ICON_MAP = {

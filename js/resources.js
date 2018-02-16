@@ -4,9 +4,10 @@ WHO_OPTIONS.forEach(function(opt, idx) {
   if (ICON_MAP[opt]) { filterVal.icon = ICON_MAP[opt]; }
   WHO_FILTER_OPTIONS.push(filterVal);
 });
-RESTRICTION_OPTIONS.forEach(function(res, idx) {
-  var filterVal = { id: WHO_OPTIONS.length + idx, text: LABEL_MAP[res], value: res, type: "restriction" };
-  if (ICON_MAP[res]) { filterVal.icon = ICON_MAP[res]; }
+RESTRICTION_FILTERS.forEach(function(res, idx) {
+  var filterVal = res;
+  filterVal.id = idx;
+  filterVal.type = "restriction";
   WHO_FILTER_OPTIONS.push(filterVal);
 });
 

@@ -3,8 +3,8 @@ describe "page", type: :feature, js: true do
   describe "wizard page navbar" do
     before(:each) { visit '/' }
 
-    it "has a Resources link" do
-      expect(find('#navbar ul li:first-child').text).to eq('Resources')
+    it "has a Download Guide link" do
+      expect(find('#navbar ul li:first-child').text).to eq('Download Guide')
     end
 
   end
@@ -17,15 +17,15 @@ describe "page", type: :feature, js: true do
     end
 
     it "has a Download Guide" do
-      expect(find('#navbar ul li:nth-child(2)').text).to eq('Download Guide')
+      expect(find('#navbar ul li:first-child').text).to eq('Download Guide')
     end
 
     it "has an About" do
-      expect(find('#navbar ul li:nth-child(3)').text).to eq('About')
+      expect(find('#navbar ul li:nth-child(2)').text).to eq('About')
     end
 
     it "has an Add resource" do
-      expect(find('#navbar ul li:nth-child(4)').text).to eq('Add resource')
+      expect(find('#navbar ul li:nth-child(3)').text).to eq('Add resource')
     end
   end
 
