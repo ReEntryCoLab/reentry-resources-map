@@ -34,6 +34,7 @@ layout: default
                     {{#each questions}}
                     <div class="question">
                         <p class="question-text">{{text}}</p>
+                        {{#if sub_text}}<p class="sub-text">{{sub_text}}</p>{{/if}}
                         {{#if checkbox}}
                             <div class="checkbox">
                             <p class="help-text">{{help_text}}</p>
@@ -47,7 +48,7 @@ layout: default
                             </div>
                         {{/if}}
                         {{#if radio}}
-                        <p class="help-text">{{help_text}}</p>
+                        <p class="sub-text">{{help_text}}</p>
                         <div class="form-group">
                             {{#each radio}}
                             <label class="radio-inline">
@@ -57,7 +58,7 @@ layout: default
                         </div>
                         {{/if}}
                         {{#if address}}
-                        <p class="help-text">{{help_text}}</p>
+                        <p class="sub-text">{{help_text}}</p>
                         <div class="form-group">
                             <input class='form-control' id='{{address}}' placeholder='Enter your address or an intersection' type='text'>
                         </div>

@@ -1,10 +1,15 @@
-var WHO_FILTER_OPTIONS = [
-  { id: 0, text: "Veterans", value: "veterans", type: "who", icon: "icon-vets" },
-  { id: 1, text: "Immigrants", value: "immigrants", type: "who" },
-  { id: 2, text: "Currently incarcerated", value: "currentlyincarcerated", type: "who" },
-  { id: 3, text: "Women", value: "menonly", type: "restriction", icon: "icon-female" },
-  { id: 4, text: "Men", value: "womenonly", type: "restriction", icon: "icon-male" },
-];
+var WHO_FILTER_OPTIONS = [];
+WHO_OPTIONS.forEach(function(opt, idx) {
+  var filterVal = { id: idx, text: LABEL_MAP[opt], value: opt, type: "who" };
+  if (ICON_MAP[opt]) { filterVal.icon = ICON_MAP[opt]; }
+  WHO_FILTER_OPTIONS.push(filterVal);
+});
+RESTRICTION_FILTERS.forEach(function(res, idx) {
+  var filterVal = res;
+  filterVal.id = idx;
+  filterVal.type = "restriction";
+  WHO_FILTER_OPTIONS.push(filterVal);
+});
 
 $(window).resize(function () {
   var h = $(window).height(),

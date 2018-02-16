@@ -5,10 +5,9 @@ var WIZARD_STEPS = [
         questions: [
             {
                 text: 'Thinking of the person for whom you are finding resources, ' +
-                    'select all of the options that describe what that person is looking ' +
-                    'for. We will filter the list to show you only programs related to what ' +
-                    'you select.',
-                help_text: 'The person is looking for',
+                    'select all of the options that describe what that person is looking for.',
+                sub_text: 'We will filter the list to show you only programs related to what you select.',
+                help_text: 'The person is looking for:',
                 param: 'type',
                 checkbox: [
                     { value: 'housing', text: 'A place to live or immediate shelter' },
@@ -48,9 +47,9 @@ var WIZARD_STEPS = [
         questions: [
             {
                 text: 'Thinking of the person for whom you are finding resources, ' + 
-                    'select all of the options below that accurately describe that person. ' +
-                    'We can filter the list to show programs and resources that will apply.',
-                help_text: 'This person',
+                    'select all of the options below that accurately describe that person. ',
+                sub_text: 'We will filter the list to show programs and resources that will apply.',
+                help_text: 'This person:',
                 param: 'type',
                 checkbox: [
                     { value: 'isparent', text: 'Is a parent' },

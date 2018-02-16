@@ -558,6 +558,10 @@ div#modal-image { padding: 0; }
 }
 
 #wizard-container p.help-text {
+  font-size: 18px;
+}
+
+#wizard-container p.sub-text {
   font-size: 16px;
 }
 
