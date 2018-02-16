@@ -26,7 +26,7 @@ var WIZARD_STEPS = [
         questions: [
             {
                 text: 'Do you want to see resources that are close to a certain address? If so, enter the address below.',
-                help_text: 'For example, we can show you resources that are close to your home.',
+                sub_text: 'For example, we can show you resources that are close to your home.',
                 param: 'address',
                 address: 'search-address'
             }
@@ -52,7 +52,7 @@ var WIZARD_STEPS = [
             },
             {
                 text: 'Is this person currently incarcerated?',
-                help_text: 'We can show you programs that serve incarcerated people and their families.',
+                sub_text: 'We can show you programs that serve incarcerated people and their families.',
                 param: 'currentlyincarcerated',
                 radio: [
                     { value: 'true', text: 'Yes' },
