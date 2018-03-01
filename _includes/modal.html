@@ -20,6 +20,9 @@
               <div id="modal-main">
                 {{#if address}}
                 <p id='modal-address'><i class='icon-map-marker' aria-hidden='true'></i>&nbsp; {{address}}</p>
+                {{#if showDistance}}
+                <p><strong>Distance</strong>: {{#if distance}}{{distance}} miles{{else}}Not applicable{{/if}}</p>
+                {{/if}}
                 <p class="modal-directions"><a href="http://maps.google.com/?q={{address}}" target="_blank">GET DIRECTIONS</a></p>
                 {{/if}}
                 {{#if phone}}
@@ -58,7 +61,7 @@
                   {{#if restrictions}}
                   <h4 id="restrictions-header">Restrictions</h4>
                   <div id="restrictions-subsection">
-                    <!-- {{#if flags}}
+                    {{#if flags}}
                       {{#each flags}}
                       <span>
                        {{#if icon}}
@@ -68,23 +71,11 @@
                        </span>
                        <br>
                     {{/each}}
-                    {{/if}} -->
+                    {{/if}}
                     <p>{{restrictions}}</p>
                   </div>
                   {{/if}}
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-body modal-body-bottom">
-        <div class="container-fluid bd-example-row">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="input-group">
-                <button type="button" class="btn btn-change" id="copy-button" data-clipboard-target="#post-shortlink" data-tooltip="true" title="Copy to clipboard"><i class="icon-clipboard" aria-hidden="true"></i></button>
-                <input id="post-shortlink" type="text" class="form-control">
               </div>
             </div>
           </div>

@@ -392,8 +392,8 @@ button.btn.btnViewMode {
 
 .facility-name {
   font-weight: bold;
-  text-decoration: underline;
-  cursor: pointer;
+  /* text-decoration: underline;
+  cursor: pointer; */
 }
 .facility-notes {
   font-size: 14px;
@@ -402,7 +402,8 @@ button.btn.btnViewMode {
   margin-top: 15px;
   display: block;
 }
-.facility-name:hover, .locate-name:hover {
+/* .facility-name:hover, */
+.locate-name:hover {
   color: #7F7F7F;
 }
 
