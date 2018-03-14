@@ -129,14 +129,14 @@ describe "events", type: :feature, js: true do
     end
   end
 
-  describe "click on list content" do
-    it "creates a modal pop-up" do
-      visit '/resources'
-      sleep(1)
-      find('span.facility-name', match: :first).click
-      sleep(1)
-      expect(page).to have_selector('#modal-pop', visible: true)
-    end
-  end
+  # describe "click on list content" do
+  #   it "creates a modal pop-up" do
+  #     visit '/resources'
+  #     sleep(1)
+  #     find('span.facility-name', match: :first).click
+  #     sleep(1)
+  #     expect(page).to have_selector('#modal-pop', visible: true)
+  #   end
+  # end
 
 end

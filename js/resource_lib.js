@@ -15,6 +15,7 @@ var ResourceLib = {
   resultsCount: 0,
   pageSize: 20,
   infoBox: L.control({position: 'bottomleft'}),
+  showDistance: false,
 
   // MAIN FILTER FUNCTIONS
 
@@ -195,6 +196,7 @@ var ResourceLib = {
     // Filter first based on location, then on categories
     if (that.currentLocation.length > 0) {
       var loc = {lat: that.currentLocation[0], lon: that.currentLocation[1]};
+      that.showDistance = true;
       that.results = that.allResults.map(function(r) { 
         if (r.lat !== 0 && r.lon !== 0) { r.distance = haversine(loc, r); }
         return r;
@@ -208,6 +210,7 @@ var ResourceLib = {
         return 0;
       });
     } else {
+      that.showDistance = false;
       that.results = that.allResults.sort(that.sortByName);
     }
     // Apply category filters to already filtered results if filters selected
@@ -439,15 +442,8 @@ var ResourceLib = {
 
     that.createSearchHeader();
 
-    that.renderTemplate('#results-list-template', '#results-list', pageResults);
-
-    $(".facility-name").on("click", function () {
-      var thisName = $(this).text();
-      $.each(pageResults, function (index, obj) {
-        if (obj.name == thisName) {
-          that.modalPop(obj)
-        }
-      });
+    that.renderTemplate('#results-list-template', '#results-list', {
+      results: pageResults, showDistance: that.showDistance
     });
 
     if (listOffset > 0) {
@@ -506,6 +502,7 @@ var ResourceLib = {
 
   modalPop: function(data) {
     var that = this;
+    data.showDistance = that.showDistance;
     if (data.website != null) {
       data.url =  data.website;
     }

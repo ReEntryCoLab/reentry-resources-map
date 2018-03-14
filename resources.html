@@ -101,7 +101,7 @@ permalink: /resources/
     <div id='mapCanvas' style="display: none"></div>
     <script id="results-list-template" type="text/x-handlebars-template">
       {% raw %}
-      {{#each this}}
+      {{#each results}}
       <tr>
         <td class="hidden-xs">
           <span class="hidden given-id">{{id}}</span>
@@ -124,7 +124,9 @@ permalink: /resources/
              {{/if}}
              {{flag}}
           {{/each}}
-          </span><br>
+          {{#if restrictions}}
+          <br><span><strong>Details</strong>: {{restrictions}}</span>
+          {{/if}}
           {{/if}}
         {{#if online_only}}
             <span class='hidden-sm hidden-md hidden-lg mobile-info'>
@@ -141,9 +143,15 @@ permalink: /resources/
           {{#if address}}
             <span class='hidden-sm hidden-md hidden-lg mobile-info'>
               <i class='icon-map-marker'></i>  {{address}}<br>
+              {{#if @root.showDistance}}
+              <span><strong>Distance</strong>: {{#if distance}}{{distance}} miles{{else}}Not applicable{{/if}}</span><br>
+              {{/if}}
               <span class="modal-directions"><a href="http://maps.google.com/?q={{address}}" target="_blank">GET DIRECTIONS</a></span><br>
               {{#if phone}}
               <i class="icon-phone"></i> {{phone}}<br>
+              {{/if}}
+              {{#if hours}}
+              <i class='icon-calendar' aria-hidden='true'></i>&nbsp; {{hours}}<br>
               {{/if}}
               <span class="facility-site">
                 <a href='{{website}}' target='_blank'><i class='icon-reply' aria-hidden='true'></i> Website</a>
@@ -152,6 +160,9 @@ permalink: /resources/
           </td>
           <td class="hidden-xs" style="width: 300px"><i class="icon-map-marker" aria-hidden="true"></i>
             <span class="facility-address">{{address}}</span><br>
+            {{#if @root.showDistance}}
+            <span><strong>Distance</strong>: {{#if distance}}{{distance}} miles{{else}}Not applicable{{/if}}</span><br>
+            {{/if}}
             <span class="modal-directions"><a href="http://maps.google.com/?q={{address}}" target="_blank">GET DIRECTIONS</a></span><br>
           {{else}}
           </td>
@@ -160,6 +171,9 @@ permalink: /resources/
         {{/if}}
         {{#if phone}}
         <i class="icon-phone"></i> <span class="facility-phone">{{phone}}</span><br>
+        {{/if}}
+        {{#if hours}}
+        <i class='icon-calendar' aria-hidden='true'></i>&nbsp; {{hours}}<br>
         {{/if}}
         <span class="facility-site">
           <a href='{{website}}' target='_blank'><i class='icon-reply' aria-hidden='true'></i> Website</a>
