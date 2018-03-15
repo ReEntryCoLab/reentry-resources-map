@@ -5,7 +5,7 @@ permalink: /resources/
 ---
 
 <div class='row'>
-  <div class="col-md-4">
+  <div class="col-md-4" id ="filter-column">
     <script id="countyClerk-template" type="text/x-handlebars-template">
       {% raw %}
       <p><strong>The {{name}} is at {{address}} with phone number {{phone}}</strong>.</p>
@@ -32,9 +32,6 @@ permalink: /resources/
           {{#each categories}}
           <label class="control">
             {{text}}
-            {{#if icon}}
-            <i class="{{icon}}"></i>
-            {{/if}}
             <input class="filter-option category" type="checkbox" id="{{id}}" value="{{value}}">
             <div class="check"></div>
           </label>
@@ -43,9 +40,6 @@ permalink: /resources/
           {{#each who_options}}
           <label class="control">
             {{text}}
-            {{#if icon}}
-            <i class="{{icon}}"></i>
-            {{/if}}
             <input class="filter-option {{type}}" type="checkbox" id="{{id}}" value="{{value}}">
             <div class="check"></div>
           </label>
@@ -108,25 +102,20 @@ permalink: /resources/
         </td>
         <td>
           <span class="facility-name">{{name}}</span>
-          {{#if icons}}
-            {{#each icons}}
-              <i class="{{this}}"></i>
-            {{/each}}
-          {{/if}}
           <br>
           <span class="facility-notes">{{notes}}</span><br>
           {{#if flags}}
           <br>
           <span class="facility-flags"><strong>Restrictions</strong>:
           {{#each flags}}
-             {{#if icon}}
-             <i class="{{icon}}"></i>
-             {{/if}}
              {{flag}}
           {{/each}}
+          {{/if}}
           {{#if restrictions}}
           <br><span><strong>Details</strong>: {{restrictions}}</span>
           {{/if}}
+          {{#if feedback}}
+          <br><span><strong>Feedback</strong>: {{feedback}}</span>
           {{/if}}
         {{#if online_only}}
             <span class='hidden-sm hidden-md hidden-lg mobile-info'>
