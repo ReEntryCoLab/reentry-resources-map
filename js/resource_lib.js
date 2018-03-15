@@ -58,7 +58,7 @@ var ResourceLib = {
 
         if (properties) {
           $.each(properties, function (prop, value) {
-            if ($.inArray(String(prop), FACILITY_TYPE_OPTIONS.concat(WHO_OPTIONS)) > -1 && value == 'Yes') {
+            if ($.inArray(String(prop), FACILITY_TYPE_OPTIONS.concat(WHO_OPTIONS)) > -1 && value) {
               facilityType += (that.formatText(prop) + ", ")
             }
           });
@@ -145,7 +145,7 @@ var ResourceLib = {
         var row = {};
         properties.forEach(function (p) {
           if (CATEGORIES.indexOf(p) !== -1) {
-            row[p] = r["gsx$" + p].$t === "Yes" ? true : false;
+            row[p] = r["gsx$" + p].$t.trim() !== "" ? true : false;
           }
           // Convert lat and lon to numbers
           else if (["lat", "lon"].indexOf(p) !== -1) {
