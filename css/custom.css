@@ -747,3 +747,22 @@ div#modal-image { padding: 0; }
 .icon-work:before {
   content: "\e9ae";
 }
+
+@media print {
+  #navbar ul,
+  #listControls,
+  #filter-column,
+  .btnViewMode,
+  .navbar-header button {
+    display: none;
+  }
+  .navbar {
+    display: inherit;
+  }
+  .navbar-inverse {
+    border: none;
+  }
+  .navbar-header a.navbar-brand {
+    font-size: 20px;
+  }
+}
