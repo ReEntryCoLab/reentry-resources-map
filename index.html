@@ -52,7 +52,7 @@ layout: default
                         <div class="form-group">
                             {{#each radio}}
                             <label class="radio-inline">
-                                <input type="radio" name="{{value}}">{{text}}
+                                <input type="radio" name="{{../param}}" value="{{value}}">{{text}}
                             </label>
                             {{/each}}
                         </div>

@@ -43,9 +43,9 @@ var WIZARD_STEPS = [
                 help_text: 'This person:',
                 param: 'type',
                 checkbox: [
-                    { value: 'isparent', text: 'Is a parent' },
+                    { value: 'parents', text: 'Is a parent' },
                     { value: 'veterans', text: 'Is a veteran' },
-                    { value: 'immigrant', text: 'Is an immigrant' },
+                    { value: 'immigrants', text: 'Is an immigrant' },
                     { value: 'womenonly', text: 'Is a man' },
                     { value: 'menonly', text: 'Is a woman' }
                 ]
@@ -65,7 +65,9 @@ var WIZARD_STEPS = [
 
 function updateQueryParams() {
     var urlBase = "/resources/#/?";
+    var radioButtons = $("input[type='radio'][value='true']:checked");
     var typeOptions = $.map($(".filter-option:checked"), function(obj, idx) { return obj.value; });
+    typeOptions = typeOptions.concat($.map(radioButtons, function (b) { return b.name; }));
     if (typeOptions.length) urlBase += "type=" + encodeURIComponent(typeOptions.join(",")) + "&";
 
     var address = $("#search-address").val();
@@ -105,4 +107,7 @@ function stepLabels(steps) {
     var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search-address'));
     // Add slight delay for autocomplete values
     $("#wizard input").on("change", function() { setTimeout(updateQueryParams, 250); });
+    $("input[name='currentlyincarcerated']").on("change", function () {
+        setTimeout(updateQueryParams, 250);
+    });
 })()
