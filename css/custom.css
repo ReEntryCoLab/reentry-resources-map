@@ -608,6 +608,10 @@ div#modal-image { padding: 0; }
   color: #333333;
 }
 
+#disclaimer-modal-pop p {
+  margin: 16px 0;
+}
+
 /* ICOMOON */
 @font-face {
   font-family: 'icomoon';
