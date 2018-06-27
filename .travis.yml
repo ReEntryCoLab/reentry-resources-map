@@ -6,4 +6,4 @@ addons:
 install:
 - bundle install
 script:
-- rspec spec
+- xvfb-run rspec spec
