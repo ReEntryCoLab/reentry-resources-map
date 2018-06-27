@@ -1,7 +1,9 @@
 require 'support/search_helper.rb'
+require 'support/modal_helper.rb'
 
 describe "events", type: :feature, js: true do
   include SearchHelper
+  include ModalHelper
   let(:address) { '441 North Milwaukee Avenue, Chicago, IL, United States' }
 
   describe "click search button" do
@@ -34,23 +36,26 @@ describe "events", type: :feature, js: true do
 
     it 'shows result count' do
       visit '/resources'
-      sleep(1)
+      close_modal
       expect(find('#search-header h4').text).to end_with 'resources in Illinois for all categories'
     end
     
     it 'does not show the previous button on the first page' do
       visit '/resources'
+      close_modal
       expect(page).to have_selector("#prevButton", visible: false)
       expect(find('#search-header h5').text.split(" ")[1].to_i).to be == 1
     end
     
     it 'shows the next button on the first page' do
       visit '/resources'
+      close_modal
       expect(page).to have_selector("#nextButton", visible: true)
     end
 
     it 'shows filter description' do
       visit '/resources'
+      close_modal
       expect(page).to have_selector('.btnViewMode')
       find('#filters label.control', match: :first).click
       find("#btnSearch", match: :first).click
@@ -60,12 +65,13 @@ describe "events", type: :feature, js: true do
     
     it 'shows page counts' do
       visit '/resources'
+      close_modal
       expect(find('#search-header h5').text).to start_with 'Page 1 of'
     end
     
     it 'updates page counts on filter' do
       visit '/resources'
-      sleep(1)
+      close_modal
       total_page_count = find('#search-header h4').text.split(" ")[0].to_i
       expect(page).to have_selector('.btnViewMode')
       find('#filters label.control', match: :first).click
@@ -77,6 +83,7 @@ describe "events", type: :feature, js: true do
     
     it 'updates the current page number on clicking next' do
       visit '/resources'
+      close_modal
       expect(find('#search-header h5').text.split(" ")[1].to_i).to be == 1
       find('#nextButton', match: :first).click
       expect(find('#search-header h5').text.split(" ")[1].to_i).to be == 2
@@ -101,6 +108,7 @@ describe "events", type: :feature, js: true do
 
     it 'filters with multiple categories' do
       visit '/resources'
+      close_modal
       expect(page).to have_selector('.btnViewMode')
       find('#filters .control', match: :first).click
       find('#filters .control:nth-child(2)', match: :first).click
@@ -111,6 +119,7 @@ describe "events", type: :feature, js: true do
 
     it 'show restrictions in description' do
       visit '/resources'
+      close_modal
       expect(page).to have_selector('.btnViewMode')
       find('#filters .control:first-child', match: :first).click
       find('#filters .control:last-child', match: :first).click
@@ -128,15 +137,5 @@ describe "events", type: :feature, js: true do
       expect("#{uri.path}?#{uri.query}").to eq("/resources?")
     end
   end
-
-  # describe "click on list content" do
-  #   it "creates a modal pop-up" do
-  #     visit '/resources'
-  #     sleep(1)
-  #     find('span.facility-name', match: :first).click
-  #     sleep(1)
-  #     expect(page).to have_selector('#modal-pop', visible: true)
-  #   end
-  # end
 
 end

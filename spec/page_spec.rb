@@ -1,4 +1,7 @@
+require 'support/modal_helper.rb'
+
 describe "page", type: :feature, js: true do
+  include ModalHelper
 
   describe "wizard page navbar" do
     before(:each) { visit '/' }
@@ -24,8 +27,8 @@ describe "page", type: :feature, js: true do
       expect(find('#navbar ul li:nth-child(2)').text).to eq('About')
     end
 
-    it "has an Add resource" do
-      expect(find('#navbar ul li:nth-child(3)').text).to eq('Add resource')
+    it "has a Resources link" do
+      expect(find('#navbar ul li:nth-child(3)').text).to eq('Resources')
     end
   end
 
@@ -36,8 +39,32 @@ describe "page", type: :feature, js: true do
     }
 
     it "has a resources div" do
+      sleep(1)
       expect(page).to have_selector('.resources-count', visible: true)
     end
+  end
+
+  describe "disclaimer modal" do
+    before(:each) {
+      visit '/'
+    }
+
+    it "has a disclaimer modal" do
+      expect(page).to have_selector('.modal-dialog', visible: true)
+    end
+
+    it "hides the modal on click" do
+      close_modal
+      expect(page).to have_selector('.modal-dialog', visible: false)
+    end
+
+    it "doesn't show the modal after it's been hidden" do
+      close_modal
+      expect(page).to have_selector('.modal-dialog', visible: false)
+      visit '/'
+      expect(page).to have_selector('.modal-dialog', visible: false)
+    end
+
   end
 
 end

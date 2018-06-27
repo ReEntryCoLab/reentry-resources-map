@@ -1,8 +1,14 @@
+require 'support/modal_helper.rb'
+
 describe "events", type: :feature, js: true do
+  include ModalHelper
   let(:address) { '441 North Milwaukee Avenue, Chicago, IL, United States' }
 
   describe "wizard page" do
-    before(:each) { visit '/' }
+    before(:each) {
+      visit '/'
+      close_modal
+    }
 
     it "shows the first step of the wizard" do
       expect(page).to have_selector("#wizard .step", visible: true)
