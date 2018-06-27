@@ -4,7 +4,10 @@ describe "page", type: :feature, js: true do
   include ModalHelper
 
   describe "wizard page navbar" do
-    before(:each) { visit '/' }
+    before(:each) {
+      visit '/'
+      close_modal
+    }
 
     it "has a Download Guide link" do
       expect(find('#navbar ul li:first-child').text).to eq('Download Guide')
@@ -13,7 +16,10 @@ describe "page", type: :feature, js: true do
   end
 
   describe "resources page navbar" do
-    before(:each) { visit '/resources' }
+    before(:each) {
+      visit '/resources'
+      close_modal
+    }
 
     it "has a page title" do
       expect(find('.navbar-brand').text).to eq('Illinois Re-Entry Resources')
@@ -35,6 +41,7 @@ describe "page", type: :feature, js: true do
   describe "map canvas" do
     before(:each) {
       visit '/resources'
+      close_modal
       find('.btnViewMode', match: :first).click
     }
 
