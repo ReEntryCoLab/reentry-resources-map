@@ -6,5 +6,21 @@ description: ""
 encoding: utf-8
 url: "https://reentryillinois.net"
 baseurl: ""
-guide_link: "https://www.dropbox.com/s/n90grl55rgiyvlv/Mapping%20Your%20Future%202019_smaller%20size.pdf?dl=1"
+guide_links:
+  - title: COVID-19 Reentry Guide
+    links:
+      - url: http://www.educationjustice.net/home/wp-content/uploads/2020/05/EJP-COVID-19-Reentry-Guide_May-2020_digital_1.pdf
+        label: English
+      - url: http://www.educationjustice.net/home/wp-content/uploads/2020/05/COVID-19-Pamphlet-Spanish-1.pdf
+        label: Español
+  - title: Returning Home Reentry Guide
+    links:
+      - url: http://www.educationjustice.net/home/wp-content/uploads/2019/07/Returning-Home_2019_English.pdf
+        label: English
+      - url: https://drive.google.com/file/d/1Kt4B7qRXHQ5U8VqH61A1AuLlCUobtFjo/view
+        label: Español
+  - title: Mapping Your Future
+    links:
+      - url: https://www.dropbox.com/s/n90grl55rgiyvlv/Mapping%20Your%20Future%202019_smaller%20size.pdf?dl=1
+        label: English
 timezone: America/Chicago

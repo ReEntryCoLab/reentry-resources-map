@@ -83,19 +83,24 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon-times-circle" aria-hidden="true"></i></span></button>
-        <h4 class="modal-title" id="modal-title">View, Download Re-Entry Guide</h4>
+        <h4 class="modal-title" id="modal-title">View, Download Re-Entry Guides</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid bd-example-row">
           <div class="row">
             <div class="col-md-8 get-sm">
               <div id="modal-main">
-                <p>The full IRGI re-entry guide can be downloaded/viewed online, but be
-                aware if you're using a data plan that it takes several MB.<p>
+                <p>IRGI has multiple re-entry guides that can be downloaded/viewed online, but be
+                aware if you're using a data plan that each one takes several MB.<p>
                 <br>
-                <a href="{{site.guide_link}}" class='btn btn-reset' data-toggle="tooltip" data-placement="bottom" title="Download Guide">
-                  <i class="icon-reply" aria-hidden="true"></i> Go to Re-Entry Guide
-                </a>
+                {% for link_group in site.guide_links %}
+                  <h4>{{ link_group.title }}</h4>
+                  {% for link in link_group.links %}
+                  <p>
+                    <a href="{{ link.url }}">{{ link.label }}</a>
+                  </p>
+                  {% endfor %}
+                {% endfor %}
               </div>
             </div>
           </div>
