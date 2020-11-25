@@ -142,9 +142,11 @@ permalink: /resources/
               {{#if hours}}
               <i class='icon-calendar' aria-hidden='true'></i>&nbsp; {{hours}}<br>
               {{/if}}
+              {{#if website}}
               <span class="facility-site">
                 <a href='{{website}}' target='_blank'><i class='icon-reply' aria-hidden='true'></i> Website</a>
               </span>
+              {{/if}}
             </span>
           </td>
           <td class="hidden-xs" style="width: 300px"><i class="icon-map-marker" aria-hidden="true"></i>
@@ -164,9 +166,11 @@ permalink: /resources/
         {{#if hours}}
         <i class='icon-calendar' aria-hidden='true'></i>&nbsp; {{hours}}<br>
         {{/if}}
+        {{#if website}}
         <span class="facility-site">
           <a href='{{website}}' target='_blank'><i class='icon-reply' aria-hidden='true'></i> Website</a>
         </span>
+        {{/if}}
         </td>
       </tr>
       {{/each}}
